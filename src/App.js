@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { SimpleForm } from './redux-forms';
+import { SimpleForm, SimpleReduxForm } from './redux-forms';
 
 class App extends Component {
   render() {
@@ -11,11 +11,23 @@ class App extends Component {
           <div  className='col-xs-3'>
             <SimpleForm />
           </div>
+          <div className='col-xs-3'>
+          </div>
+          <div className='col-xs-3'>
+            <SimpleReduxForm />
+          </div>
         </div>
         <div className='row'>
           <div className='col-xs-3'>
             {
               JSON.stringify(this.props.FORM_DATA)
+            }
+          </div>
+          <div className='col-xs-3'>
+          </div>
+          <div className='col-xs-3'>
+            {
+              JSON.stringify(this.props.REDUX_FORM_DATA)
             }
           </div>
         </div>
@@ -26,8 +38,10 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   const FORM_DATA = state.form.simpleform.FORM_DATA;
+  const REDUX_FORM_DATA = state.form.simplereduxform.FORM_DATA;
   return {
-    FORM_DATA
+    FORM_DATA,
+    REDUX_FORM_DATA
   }
 }
 
